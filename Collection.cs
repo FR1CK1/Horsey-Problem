@@ -4,69 +4,76 @@ namespace Horsey
 {
     public class Collection
     {
-        public static int[] CoordTranslate(char x, int y)
+        public static int CoordTranslateToInt(char x)
+        //Translates A-H in 1-8
         {
-            int[] result = new int[2];
-            bool bPosCorrect = true;
+            int result = -1;
             switch (x)
             {
                 case 'a':
                 case 'A':
-                    result[0] = 0;
+                    result = 1;
                     break;
                 case 'b':
                 case 'B':
-                    result[0] = 1;
+                    result = 2;
                     break;
                 case 'c':
                 case 'C':
-                    result[0] = 2;
+                    result = 3;
                     break;
                 case 'd':
                 case 'D':
-                    result[0] = 3;
+                    result = 4;
                     break;
                 case 'e':
                 case 'E':
-                    result[0] = 4;
+                    result = 5;
                     break;
                 case 'f':
                 case 'F':
-                    result[0] = 5;
+                    result = 6;
                     break;
                 case 'g':
                 case 'G':
-                    result[0] = 6;
+                    result = 7;
                     break;
                 case 'h':
                 case 'H':
-                    result[0] = 7;
+                    result = 8;
                     break;
                 default:
                     Console.WriteLine("Buchstaben nur von A-H nutzen");
-                    bPosCorrect = false;
                     break;
             }
+            return result;
+        }
 
-            if (y <= 1 || y >= 8)
+        public static char CoordTranslateToChar(int i)
+        {
+            char c;
+            switch(i)
             {
-                Console.WriteLine("Zahl nur von 1-8");
-                bPosCorrect = false;
+                case 1:
+                    c= 'A'; break;
+                case 2:
+                    c = 'B'; break;
+                case 3:
+                    c = 'C'; break;
+                case 4:
+                    c = 'D'; break;
+                case 5:
+                    c = 'E'; break;
+                case 6:
+                    c = 'F'; break;
+                case 7:
+                    c = 'G'; break;
+                case 8:
+                    c = 'H'; break;
+                default:
+                    c = 'X'; break;
             }
-            else
-            {
-                result[1] = y - 1;
-            }
-
-            if (bPosCorrect)
-            {
-                return result;
-            } else
-            {
-                result[0] = -1;
-                result[1] = -1;
-                return result;
-            }
+            return c;
         }
     }
 }
